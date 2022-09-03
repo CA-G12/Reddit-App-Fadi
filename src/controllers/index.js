@@ -1,5 +1,6 @@
-const getAllUsers = require('./users');
+const { getSinginPage, getSingupPage } = require('./routing');
 
 module.exports = {
-  getAllUsers,
+  getSinginPage,
+  getSingupPage,
 };

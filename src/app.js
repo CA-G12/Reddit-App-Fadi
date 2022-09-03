@@ -5,6 +5,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 
 const router = require('./routers');
+const routing = require('./routers/routing');
 
 const app = express();
 app.set('port', process.env.PORT || 3000);
@@ -13,6 +14,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 app.use(compression());
 app.use(express.static(join(__dirname, '..', 'public')));
+app.use('/pages/', routing);
 app.use('/api/v1', router);
 
 module.exports = app;
