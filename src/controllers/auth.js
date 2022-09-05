@@ -13,7 +13,7 @@ const postSignup = (req, res, next) => {
           if (data.error) {
             throw new Error(data.error.details[0].message);
           } else {
-            res.send('validated');
+            res.status(200).send('validated');
           }
         })
         .catch((err) => next(new CustomizedError(400, `Bad request: ${err}`)));
@@ -26,7 +26,7 @@ const postSignin = (req, res, next) => {
       if (data.error) {
         throw new Error(data.error.details[0].message);
       } else {
-        res.send('validated');
+        res.status(200).send('validated');
       }
     })
     .catch((err) => next(new CustomizedError(400, `Bad request: ${err}`)));
