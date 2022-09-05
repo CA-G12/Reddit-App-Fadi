@@ -1,5 +1,5 @@
-const { Pool } = require('pg');
 require('dotenv').config();
+const { Pool } = require('pg');
 
 const {
   NODE_ENV, DATABASE_URL, TEST_URL, DEV_URL,
