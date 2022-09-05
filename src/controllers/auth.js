@@ -1,6 +1,7 @@
 const { validateSignup, validateSignin } = require('../helpers/signupValidation');
-const CustomizedError = require('../error/customizedError');
+const CustomizedError = require('../Error/customizedError');
 const getAllUsersnameQuery = require('../database/quires/users/getAllUsersnameQuery');
+
 
 const postSignup = (req, res, next) => {
   getAllUsersnameQuery()
