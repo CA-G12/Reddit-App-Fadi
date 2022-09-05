@@ -6,7 +6,7 @@ test('Initial test', () => {
   expect(3).toBe(3);
 });
 
-describe('Testing serving files', ()=> {
+describe('Testing serving files', () => {
   test('serving signin file', (done) => {
     request(app)
       .get('/pages/signin')
@@ -14,7 +14,7 @@ describe('Testing serving files', ()=> {
       .end((err, res) => {
         if (err) return done(err);
         expect(res.statusCode).toBe(200);
-        done();
+        return done();
       });
   });
 
@@ -25,7 +25,7 @@ describe('Testing serving files', ()=> {
       .end((err, res) => {
         if (err) return done(err);
         expect(res.statusCode).toBe(200);
-        done();
+        return done();
       });
   });
 });
@@ -42,7 +42,7 @@ describe('test sign in and sign up validation', () => {
       .end((err, res) => {
         if (err) return done(err);
         expect(res.status).toBe(400);
-        done();
+        return done();
       });
   });
   test('sign up with valid inputs', (done) => {
@@ -56,7 +56,7 @@ describe('test sign in and sign up validation', () => {
       .end((err, res) => {
         if (err) return done(err);
         expect(res.status).toBe(200);
-        done();
+        return done();
       });
   });
 
@@ -70,7 +70,7 @@ describe('test sign in and sign up validation', () => {
       .end((err, res) => {
         if (err) return done(err);
         expect(res.status).toBe(400);
-        done();
+        return done();
       });
   });
   test('signin with valid inputs', (done) => {
