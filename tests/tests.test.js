@@ -29,3 +29,61 @@ describe('Testing serving files', ()=> {
       });
   });
 });
+
+describe('test sign in and sign up validation', () => {
+  test('sign up with invalid username', (done) => {
+    request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+        username: 'newuser',
+        password: 'Ab1234!@ab',
+        avatar: 'https://anything.com/pic.png',
+      })
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.status).toBe(400);
+        done();
+      });
+  });
+  test('sign up with valid inputs', (done) => {
+    request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+        username: 'newvaliduser',
+        password: 'Ab1234!@ab',
+        avatar: 'https://anything.com/pic.png',
+      })
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.status).toBe(200);
+        done();
+      });
+  });
+
+  test('signin with invalid username', (done) => {
+    request(app)
+      .post('/api/v1/auth/signin')
+      .send({
+        username: 'newuser',
+        password: 'Ab1234!@ab',
+      })
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.status).toBe(400);
+        done();
+      });
+  });
+  test('signin with valid inputs', (done) => {
+    request(app)
+      .post('/api/v1/auth/signin')
+      .send({
+        username: 'newvaliduser',
+        password: 'Ab1234!@ab',
+      })
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.status).toBe(200);
+        done();
+      });
+  });
+});
