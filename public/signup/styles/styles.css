@@ -34,7 +34,6 @@ a {
     border: none;
     border: 1px solid #277BC0;
     border-radius: 1rem;
-
 }
 
 
@@ -111,3 +110,27 @@ a {
     color: black;
     transform: scale(1.1);
 }
+
+.not-valid:focus{
+    outline: none;
+    border: 0.1rem solid red;
+   color: red;
+}
+.not-valid {
+    border: 1rem solid red;
+}
+.valid:focus {
+    color: green;
+    outline: none;
+    border: 0.1rem solid green;
+}
+
+.valid {
+    position: relative;
+    width: 100%;
+    padding: 0.7rem;
+    border: none;
+    border: 1px solid green;
+    border-radius: 1rem;
+}
+
