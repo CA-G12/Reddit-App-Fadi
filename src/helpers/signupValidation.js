@@ -1,4 +1,5 @@
 const Joi = require('joi');
+require('dotenv').config();
 
 const validateSignup = (body) => {
   const schema = Joi.object({
