@@ -5,7 +5,7 @@ const app = require('../src/app');
 const build = require('../src/database/config/build');
 const connection = require('../src/database/config/connection');
 
-beforeAll(() => build());
+beforeEach(() => build());
 afterAll(() => connection.end());
 
 describe('Testing serving files', () => {
@@ -86,7 +86,7 @@ describe('test sign in and sign up validation', () => {
         if (err) return done(err);
         expect(res.status).toBe(200);
         expect(res.header['set-cookie'][0]).not.toBe(undefined);
-        done();
+        return done();
       });
   });
 });
