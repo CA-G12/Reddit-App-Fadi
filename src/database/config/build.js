@@ -5,7 +5,8 @@ const connection = require('./connection');
 
 const build = () => {
   const sql = readFileSync(join(__dirname, 'data.sql'), { encoding: 'utf-8' });
-  return connection.query(sql);
+  const seeds = readFileSync(join(__dirname, 'schema.sql'), { encoding: 'utf-8' });
+  return connection.query(sql + seeds);
 };
 
 module.exports = build;

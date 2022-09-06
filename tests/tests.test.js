@@ -79,8 +79,8 @@ describe('test sign in and sign up validation', () => {
     request(app)
       .post('/api/v1/auth/signin')
       .send({
-        username: 'newvaliduser',
-        password: 'Ab1234!@ab',
+        username: 'hasansal',
+        password: 'TestTest12!@',
       })
       .end((err, res) => {
         if (err) return done(err);
