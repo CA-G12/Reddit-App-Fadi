@@ -47,7 +47,7 @@ const postSignin = (req, res, next) => {
             comparePasswords(req.body.password, user.password)
               .then((confirmed) => {
                 if (confirmed) {
-                  console.log(process.env.SECRET_KEY);
+                  console.log(process.env);
                   const token = generateAccessToken({
                     username: user.username,
                     id: user.id,
