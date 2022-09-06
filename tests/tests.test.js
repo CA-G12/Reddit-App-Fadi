@@ -84,7 +84,6 @@ describe('test sign in and sign up validation', () => {
       })
       .end((err, res) => {
         if (err) return done(err);
-        console.log(res);
         expect(res.status).toBe(200);
         expect(res.header['set-cookie'][0]).not.toBe(undefined);
         return done();

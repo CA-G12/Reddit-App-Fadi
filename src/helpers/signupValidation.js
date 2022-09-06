@@ -1,5 +1,4 @@
 const Joi = require('joi');
-const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const validateSignup = (body) => {
