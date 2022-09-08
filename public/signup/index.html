@@ -4,43 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/signup/styles/styles.css">
-    <title>Sign Up</title>
+    <link rel="stylesheet" href="/signin/styles/styles.css">
+    <title>SIGN UP</title>
 </head>
 <body>
-    
+    <section class="container">
+        <section class="left">
+            <img src="https://www.redditstatic.com/accountmanager/bbb584033aa89e39bad69436c504c9bd.png" alt="">
+        </section>
+        <section class="right">
+            <section class="auth-info">
+                <h1>Sign up</h1>
+                <p>By continuing, you agree to our User Agreement and Privacy Policy.</p>
+                <button><i class="fa-brands fa-apple"></i>CONTINUE WITH GOOGLE</button>
+                <button>CONTINUE WITH APPLE</button>
 
+                <section class="content-divider">
+                    <span class="divide-line"></span>
+                </section>
+                <section class="form">
+                    <input type="email" placeholder="Username" required>
+                    <input type="password" placeholder="Password" required>
+                    <input type="url" placeholder="Avatar" required>
+                    <button type="submit">Register</button>
+                </section>
 
-  <section class="form">
-    <!-- <div class="return">
-      <a href="../../index.html"><i class="fa-solid fa-backward"></i> Back</a> 
-    </div> -->
-    <div class="con">
-        <div class="username">
-            <b>Username</b>
-            <input class="username-input" type="text" placeholder="fadezak100" required></input>
-        </div>
-  
-        <div class="password">
-            <b>Password</b>
-            <input class="password-input" type="password" placeholder="*************" required></input>
-        </div>
-  
-        <div class="password confirm-password">
-           <b>Confirm Password</b>
-          <input class="confirm-password-input" type="password" placeholder="*************" required></input>
-        </div>
-
-        <div class="password confirm-password">
-            <b>Profile Picture</b>
-           <input class="avatar-input" type="text" placeholder="link" required></input>
-         </div>
-  
-        <div class="sign-in">
-            <a href='/api/v1/auth/signup' class="register-btn">Sign Up</a>
-        </div>
-    </div>
-  </section>
-    <script src="/signup/js/index.js"></script>
+                <section class="more">
+                  <p>Already a redditor?<a href="/pages/signin"> Sign in</a></p>
+                </section>
+            </section>
+        </section>
+    </section> 
+    <script src="/signin/js/index.js"></script>
 </body>
 </html>
