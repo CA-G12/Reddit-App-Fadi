@@ -89,4 +89,18 @@ describe('test sign in and sign up validation', () => {
         return done();
       });
   });
+
+  test('signin with valid inputs and wrong credintails', (done) => {
+    request(app)
+      .post('/api/v1/auth/signin')
+      .send({
+        username: 'hasansal',
+        password: 'TestTes12!@',
+      })
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.status).toBe(401);
+        return done();
+      });
+  });
 });

@@ -9,37 +9,29 @@ const {
 const {
   getUserQuery,
   insertNewUserQuery,
-  getAllUsernamesQuery,
+  getUsername,
 } = require('../database/quires/index');
 
 const postSignup = (req, res, next) => {
-  getAllUsernamesQuery()
-    .then((usernames) => {
-      usernames.rows.forEach((obj) => {
-        if (req.body.username === obj.username) throw new Error(req.body.username);
-      });
+  getUsername(req.body.username)
+    .then((username) => {
+      if (username.rows.length !== 0) throw new CustomizedError(400, 'Bad request: user already exists');
       validateSignup(req.body)
-        .then((data) => {
-          if (data.error) {
-            throw new Error(data.error.details[0].message);
-          } else {
-            hashPassword(req.body.password)
-              .then((hashedPassword) => {
-                insertNewUserQuery({ ...req.body, password: hashedPassword })
-                  .then((addedRow) => res.status(201).send('Inserted Succuessfly!'))
-                  .catch((err) => next(new CustomizedError(400, `Insertation Failed ${err}`)));
-              })
-              .catch((err) => next(new CustomizedError(400, `${err}`)));
-          }
-        })
-        .catch((err) => next(new CustomizedError(400, `Bad request: ${err}`)));
-    }).catch((err) => next(new CustomizedError(400, `Bad request: ${err} already exists`)));
+        .then(() => {
+          hashPassword(req.body.password)
+            .then((hashedPassword) => {
+              insertNewUserQuery({ ...req.body, password: hashedPassword })
+                .then(() => res.status(201).send('Inserted Succuessfly!'))
+                .catch((err) => next(err));
+            }).catch((err) => next(err));
+        }).catch((err) => next(new CustomizedError(400, `Bad request: ${err.details[0].message}`)));
+    }).catch((err) => next(err));
 };
 
 const postSignin = (req, res, next) => {
   validateSignin(req.body)
     .then((data) => {
-      if (data.error) throw new Error(data.error.details[0].message);
+      if (data.error) throw new CustomizedError(400, data.error.details[0].message);
       getUserQuery(req.body.username)
         .then((userInfo) => {
           if (userInfo.rows.length > 0) {
@@ -52,15 +44,13 @@ const postSignin = (req, res, next) => {
                     id: user.id,
                   });
                   res.cookie('token', token).json('SignedIn');
-                } else {
-                  res.status(401).json('Wrong Credentials');
-                }
-              }).catch((err) => next(new CustomizedError(401, `${err}`)));
+                } else throw next(new CustomizedError(401, 'Wrong Credentials'));
+              }).catch((err) => next(err));
           } else {
-            res.status(401).json('Wrong Credentials');
+            throw new CustomizedError(401, 'Wrong Credentials');
           }
-        }).catch((err) => next(new CustomizedError(401, `${err}`)));
-    }).catch((err) => next(new CustomizedError(400, `Bad request: ${err}`)));
+        }).catch((err) => next(err));
+    }).catch((err) => next(new CustomizedError(400, `Bad request: ${err.details[0].message}`)));
 };
 
 module.exports = {
