@@ -3,10 +3,11 @@
 * {
    padding: 0;
    margin: 0; 
+   box-sizing: border-box;
 }
 
 body {
-    background-color: rgb(242,241,241);
+    background-color: white;
     font-family: 'Roboto', sans-serif;
 
 }
@@ -14,123 +15,96 @@ body {
 a {
  text-decoration: none;
 }
-
-.form {
-    height: 80vh;
+:root {
+    --accent-color: rgb(255, 61, 29);
+    --button-color: rgb(0, 110, 201);
+    --text-color: rgb(139, 143, 144);
+}
+/* New Styles */
+.container {
     display: flex;
+    height: 100vh;
+    width: 100vh;
+}
+.left {
+    display: flex;
+}
+.left img {
+    width: 60%;
+}
+.right {
+    display: flex;
+}
+.auth-info{
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+}
+.auth-info h1{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+.auth-info p {
+    margin-bottom: 3rem;
+}
+.auth-info button {
+    width: 70%;
+    padding: 0.8rem 4rem;
+    margin-top: 0.8rem;
+    color: var(--button-color);
+    font-weight: 900;
+    background-color: white;
+    border: none;
+    border: 1px solid var(--button-color);
+}
+.auth-info button:hover {
+    background-color: var(--button-color);
+    color: white;
+}
+.content-divider {
     align-items: center;
-    justify-content: center;
+    display: flex;
+    margin: 2rem 0;
+    justify-content: space-between;
+}
+.divide-line {
+    margin: 0;
+    background-color: red;
+    border-top: 1px solid black;
+    width: 70%;
+}
+.divide-text {
+    margin: 0;
+    font-weight: 900;
+    color: #878a8c;
+    text-transform: uppercase;
 }
 
 .form{
     display: flex;
     flex-direction: column;
-}
+    margin-bottom: 1rem;
 
+}
 .form input {
     position: relative;
-    width: 100%;
-    padding: 0.7rem;
-    border: none;
-    border: 1px solid #277BC0;
-    border-radius: 1rem;
-}
-
-
-.username b, .password b{
- margin-bottom: 0.5rem;  
- padding-left: 0.5rem;  
-}
-
-
-.username, .password, .sign-in{
-    width: 80%;
-    display: flex;
-    flex-direction: column; 
-    margin: 1rem;  
-}
-
-
-.sign-in a {
-    text-align: center;
-    position: relative;
-    width: 100%;
-    padding: 0.7rem;
-    margin-top: 1rem;
-    border: none;
-    border-radius: 1rem;
-    background-color: #277BC0;
-    color: white;
-    font-size: 1.4rem;
-}
-
-.sign-in a:hover {
-    transform: scale(1.1);
-    background-color: #FFB200;
-    color: black;
-    font-size: 1.4rem;
-}
-
-.con {
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 40%;    
-    background-color: white;
-    border-radius: 1rem;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.error {
-    margin-top: 4rem;
-    background-color: red;
-    padding: 4rem 5rem;
-    opacity: 0.6;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 1rem;
-    color: white;
-    font-size: 1.3rem;
-}
-
-.return {
     width: 70%;
-    font-size: 1.6rem;
-    margin-bottom: 2rem;
-    display: flex;
-    justify-content: start;
-    align-items: start;
-}
-
-.return a {
-    color: #277BC0;
-}
-.return a:hover {
-    color: black;
-    transform: scale(1.1);
-}
-
-.not-valid:focus{
-    outline: none;
-    border: 0.1rem solid red;
-   color: red;
-}
-.not-valid {
-    border: 1rem solid red;
-}
-.valid:focus {
-    color: green;
-    outline: none;
-    border: 0.1rem solid green;
-}
-
-.valid {
-    position: relative;
-    width: 100%;
     padding: 0.7rem;
+    margin-bottom: 1rem;
     border: none;
-    border: 1px solid green;
-    border-radius: 1rem;
-}
+    background-color: rgb(252, 252, 250);
+    border: 1px solid #277BC0;
+} 
 
+.form button {
+  background-color: var(--button-color);
+  color: white;
+  width: 70%;
+  font-weight: 900;
+  font-size: 1rem;
+}
+.form button:hover {
+    background-color: rgb(2, 137, 211);
+    color: white;
+    width: 70%;
+}

@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,900;1,700&display=swap');
+
+* {
+   padding: 0;
+   margin: 0; 
+   box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+a {
+ text-decoration: none;
+}
+:root {
+    --accent-color: rgb(255, 61, 29);
+    --button-color: rgb(0, 110, 201);
+    --text-color: rgb(139, 143, 144);
+}
+/* New Styles */
+
+/* Left Section */
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100vh;
+}
+.left {
+    display: flex;
+}
+.left img {
+    width: 60%;
+}
+.right {
+    display: flex;
+}
+.auth-info{
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+}
+.auth-info h1{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+.auth-info p {
+    margin-bottom: 3rem;
+}
+.auth-info button {
+    width: 70%;
+    padding: 0.8rem 4rem;
+    margin-top: 0.8rem;
+    color: var(--button-color);
+    font-weight: 900;
+    background-color: white;
+    border: none;
+    border: 1px solid var(--button-color);
+}
+.auth-info button:hover {
+    background-color: var(--button-color);
+    color: white;
+}
+.content-divider {
+    align-items: center;
+    display: flex;
+    margin: 2rem 0;
+    justify-content: space-between;
+}
+.divide-line {
+    margin: 0;
+    background-color: red;
+    border-top: 1px solid black;
+    width: 70%;
+}
+.divide-text {
+    margin: 0;
+    font-weight: 900;
+    color: #878a8c;
+    text-transform: uppercase;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+.form input {
+    position: relative;
+    width: 70%;
+    padding: 0.7rem;
+    margin-bottom: 1rem;
+    border: none;
+    background-color: rgb(252, 252, 250);
+    border: 1px solid #277BC0;
+} 
+
+.form button {
+  background-color: var(--button-color);
+  color: white;
+  width: 70%;
+  font-weight: 900;
+  font-size: 1rem;
+}
+.form button:hover {
+    background-color: rgb(2, 137, 211);
+    color: white;
+    width: 70%;
+}
+
+.more p {
+    font-size: 0.9rem;
+}
+.more p a {
+    color: var(--button-color);
+}
+.more p a:hover {
+    color: rgb(2, 137, 211);
+}
+
