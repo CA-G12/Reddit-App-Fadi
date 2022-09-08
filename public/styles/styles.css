@@ -1,122 +1,379 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,900;1,700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,900&display=swap');
 * {
-   padding: 0;
-   margin: 0; 
-   box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
-
 body {
-    background-color: white;
+    background-color: rgb(219,224,229);
     font-family: 'Roboto', sans-serif;
-
 }
-
 a {
- text-decoration: none;
+    text-decoration: none;
+    color: black;
+}
+a:hover {
+    cursor: pointer;
+    color: var(--button-color);
+}
+input.empty {
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
 }
 :root {
     --accent-color: rgb(255, 61, 29);
     --button-color: rgb(0, 110, 201);
     --text-color: rgb(139, 143, 144);
 }
-/* New Styles */
+/* Navbar styles */
+.navbar {
+    background-color: white;
+    height: 3rem;
+    display: flex;
+    justify-content: space-around;
+}
 
-/* Left Section */
+.dropdown, .search-bar, .log{
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+}
+
+.logo {
+    display: flex;
+    flex: 2;
+    align-items: center;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+.logo img{
+    width: 2.3rem;
+    height: 2.3rem;
+    margin: 0.2rem;
+}
+.logo p {
+    margin-left: 0.6rem;
+    font-weight: 900;
+}
+.profile {
+    display: flex;
+    flex: 2;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+}
+.username {
+    font-size: 0.8rem;
+    font-weight: bold 300;
+}
+.karams{
+    margin-top: 0.2rem;
+    font-size: 0.7rem;
+    color: #ccc;
+}
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.profile img {
+    width: 2.3rem;
+    height: 2.3rem;
+    border-radius: 0.6rem;
+    margin-right: 0.2rem;
+}
+
+.icons {
+    flex: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.icons i {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+.icons i:hover {
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+.search-bar {
+    flex: 4;
+} 
+.search-bar input {
+    width: 100%;
+    height: 1.6rem;
+    border: none;
+    padding-left: 1rem;
+    border: 1px solid black;
+    background-color: rgb(244, 246, 247);
+}
+.search-bar input::placeholder {
+    color: rgb(111);
+}
+.search-bar input:focus {
+    color: rgb(111);
+    outline: none !important;
+}
+.dropdown {
+    flex: 1.2;
+    display: flex;
+    align-items: center;
+}
+.dropdown select {
+    width: 100%;
+    height: 1.4rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: 900;
+}
+.dropdown i {
+    align-items: center;
+    margin-right: 1rem;
+}
+.auth-btn{
+    margin: 1rem;
+    padding: 0.4rem 1.5rem;
+    border: none;
+    border-radius: 0.6rem;
+}
+.profile a:first-child{
+    background-color: white;
+    border: 1px solid var(--button-color);
+    color: var(--button-color);
+}
+.profile a:first-child:hover{
+    background-color: rgb(245, 249, 253);;
+}
+
+.profile a:last-child{
+    background-color: var(--button-color);
+    border: 1px solid var(--button-color);
+    color: white;
+}
+.profile a:last-child:hover {
+    background-color: rgb(20,121,205); ;
+}
+/* End of Navbar styles */
+/* Beginning of Main Container Styling */
 .container {
     display: flex;
-    height: 100vh;
-    width: 100vh;
+    padding: 2rem 15rem;
 }
-.left {
+
+.left-content {
+ flex: 3;
+ height: 100vh;
+}
+.create-post {
+    padding: 1rem;
     display: flex;
+    align-items: center;
+    background-color: white;
+    height: 3rem;
+    margin: 1rem;
+    border-radius: 0.6rem;
 }
-.left img {
-    width: 60%;
-}
-.right {
+.posts-card {
     display: flex;
+    background-color: white;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 0.6rem;
+    
 }
-.auth-info{
-    margin-top: 10rem;
-    display: flex;
-    flex-direction: column;
+
+.create-post img{
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  margin-right: 0.9rem;
 }
-.auth-info h1{
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-.auth-info p {
-    margin-bottom: 3rem;
-}
-.auth-info button {
+.create-post input {
     width: 70%;
-    padding: 0.8rem 4rem;
-    margin-top: 0.8rem;
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 0.6rem;
+    margin-right: 1rem;
+    background-color: rgb(244, 246, 247);
+}
+
+.create-post input:focus {
+    outline: none !important;
+}
+
+.create-content-btn a {
+    margin: 0 0.6rem;
+}
+
+.create-content-btn a i:hover {
+   color: var(--accent-color);
+}
+
+
+
+.categorize a {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+
+.categorize a i {
+    margin-right: 0.2rem;
+ }
+
+.categorize a:hover {
+    background-color: rgb(244, 246, 247);
+    padding: 0.5rem;
+    border-radius: 1rem;
     color: var(--button-color);
     font-weight: 900;
-    background-color: white;
-    border: none;
-    border: 1px solid var(--button-color);
 }
-.auth-info button:hover {
+
+.checked {
+    background-color: rgb(244, 246, 247);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    color: var(--button-color);
+    font-weight: 900;
+}
+
+.votes { 
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    margin-right: 1rem;
+}
+.votes p {
+    font-size: 1.2rem;
+}
+
+.votes a:first-child i:hover {
+  color: red;
+}
+
+.votes a:last-child i:hover {
+    color: var(--button-color);
+  }
+.genre p {
+    font-size: 0.8rem;
+}  
+  
+.post {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+.post-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.post-title{
+    margin-top: 0.3rem;
+    display: flex;
+    font-size: 0.8rem;
+    align-items: center;
+    justify-self: center;
+}
+.post-title img{
+    width: 1.4rem;
+    height: 1.4rem;
+    margin-right: 0.3rem;
+    border-radius: 0.3rem;
+}
+.post-title p {
+    color: rgb(139, 143, 144);
+}
+
+.post-join-btn button{
+    padding: 0.18rem 1rem;
+    border: none;
     background-color: var(--button-color);
     color: white;
+    border-radius: 2rem;
 }
-.content-divider {
-    align-items: center;
-    display: flex;
-    margin: 2rem 0;
-    justify-content: space-between;
-}
-.divide-line {
-    margin: 0;
-    background-color: red;
-    border-top: 1px solid black;
-    width: 70%;
-}
-.divide-text {
-    margin: 0;
-    font-weight: 900;
-    color: #878a8c;
-    text-transform: uppercase;
+.post-join-btn button:hover {
+    background-color: rgb(20,121,205);
 }
 
-.form{
+
+
+.right-content {
+ flex: 1;
+}
+.post-content p {
+  margin: 0.41rem;
+}
+.post-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.post-content img{
+    height: 30rem;
+    width: 40rem;
+}
+.reactions {
+    margin-top: 1rem;
+}
+.reactions a {
+    color: var(--text-color);
+    margin-left: 1rem;
+}
+.reactions a:hover {
+    color: var(--accent-color);
+}
+.right-card{
+    margin: 1rem;
+    border-radius: 0.6rem;
+    background-color: white;
+}
+.background{
+    width: 18rem;
+}
+.right-section {
+    padding: 1rem;
+}
+.reddit-logo{
+  display: inline;
+  width: 3rem;
+}
+.right-card h1 {
+    display: inline;
+    font-size: 1rem;
+}
+.right-btns {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1rem;
+    padding-bottom: 1rem;
 }
-.form input {
-    position: relative;
-    width: 70%;
-    padding: 0.7rem;
-    margin-bottom: 1rem;
+.right-btns button{
     border: none;
-    background-color: rgb(252, 252, 250);
-    border: 1px solid #277BC0;
-} 
-
-.form button {
-  background-color: var(--button-color);
-  color: white;
-  width: 70%;
-  font-weight: 900;
-  font-size: 1rem;
-}
-.form button:hover {
-    background-color: rgb(2, 137, 211);
+    padding: 0.6rem 0;
+    border-radius: 2rem;
+    margin: 0.2rem;
     color: white;
-    width: 70%;
 }
-
-.more p {
-    font-size: 0.9rem;
+.right-btns button:first-child{
+    background-color: var(--button-color);
 }
-.more p a {
+.right-btns button:first-child:hover{
+    background-color: rgb(20,121,205);
+}
+.right-btns button:last-child {
+    background-color: white;
+    border: 1px solid var(--button-color);
     color: var(--button-color);
+    font-weight: 900;
 }
-.more p a:hover {
-    color: rgb(2, 137, 211);
+.right-btns button:last-child:hover{
+    background-color: rgb(245, 249, 253);
 }
 
+/* End of Main Container Styling */
