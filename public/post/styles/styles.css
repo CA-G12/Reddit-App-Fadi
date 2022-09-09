@@ -1,0 +1,433 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,900&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: rgb(219,224,229);
+    font-family: 'Roboto', sans-serif;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+a:hover {
+    cursor: pointer;
+    color: var(--button-color);
+}
+input.empty {
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+}
+:root {
+    --accent-color: rgb(255, 61, 29);
+    --button-color: rgb(0, 110, 201);
+    --text-color: rgb(139, 143, 144);
+}
+/* Navbar styles */
+.navbar {
+    background-color: white;
+    height: 3rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.dropdown, .search-bar, .log{
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+}
+
+.logo {
+    display: flex;
+    flex: 2;
+    align-items: center;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+.logo img{
+    width: 2.3rem;
+    height: 2.3rem;
+    margin: 0.2rem;
+}
+.logo p {
+    margin-left: 0.6rem;
+    font-weight: 900;
+}
+.profile {
+    display: flex;
+    flex: 2;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+}
+.username {
+    font-size: 0.8rem;
+    font-weight: bold 300;
+}
+.karams{
+    margin-top: 0.2rem;
+    font-size: 0.7rem;
+    color: #ccc;
+}
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.profile img {
+    width: 2.3rem;
+    height: 2.3rem;
+    border-radius: 0.6rem;
+    margin-right: 0.2rem;
+}
+
+.icons {
+    flex: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.icons i {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+.icons i:hover {
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+.search-bar {
+    flex: 4;
+} 
+.search-bar input {
+    width: 100%;
+    height: 1.6rem;
+    border: none;
+    padding-left: 1rem;
+    border: 1px solid black;
+    background-color: rgb(244, 246, 247);
+}
+.search-bar input::placeholder {
+    color: rgb(111);
+}
+.search-bar input:focus {
+    color: rgb(111);
+    outline: none !important;
+}
+.dropdown {
+    flex: 1.2;
+    display: flex;
+    align-items: center;
+}
+.dropdown select {
+    width: 100%;
+    height: 1.4rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: 900;
+}
+.dropdown i {
+    align-items: center;
+    margin-right: 1rem;
+}
+.auth-btn{
+    margin: 1rem;
+    padding: 0.4rem 1.5rem;
+    border: none;
+    border-radius: 0.6rem;
+}
+.profile a:first-child{
+    background-color: white;
+    border: 1px solid var(--button-color);
+    color: var(--button-color);
+}
+.profile a:first-child:hover{
+    background-color: rgb(245, 249, 253);;
+}
+
+.profile a:last-child{
+    background-color: var(--button-color);
+    border: 1px solid var(--button-color);
+    color: white;
+}
+.profile a:last-child:hover {
+    background-color: rgb(20,121,205); ;
+}
+/* End of Navbar styles */
+/* Beginning of Main Container Styling */
+.container {
+    display: flex;
+    padding: 2rem 15rem;
+}
+
+.left-content {
+ flex: 3;
+ height: 100vh;
+}
+.create-post {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    height: 3rem;
+    margin: 1rem;
+    border-radius: 0.6rem;
+}
+.posts-card {
+    display: flex;
+    background-color: white;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 0.6rem;
+}
+
+.create-post img{
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  margin-right: 0.9rem;
+}
+.create-post input {
+    width: 70%;
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 0.6rem;
+    margin-right: 1rem;
+    background-color: rgb(244, 246, 247);
+}
+
+.create-post input:focus {
+    outline: none !important;
+}
+
+.create-content-btn a {
+    margin: 0 0.6rem;
+}
+
+.create-content-btn a i:hover {
+   color: var(--accent-color);
+}
+
+
+
+.categorize a {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+
+.categorize a i {
+    margin-right: 0.2rem;
+ }
+
+.categorize a:hover {
+    background-color: rgb(244, 246, 247);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    color: var(--button-color);
+    font-weight: 900;
+}
+
+.checked {
+    background-color: rgb(244, 246, 247);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    color: var(--button-color);
+    font-weight: 900;
+}
+
+.votes { 
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    margin-right: 1rem;
+}
+.votes p {
+    font-size: 1.2rem;
+}
+
+.votes a:first-child i:hover {
+  color: red;
+}
+
+.votes a:last-child i:hover {
+    color: var(--button-color);
+  }
+.genre p {
+    font-size: 0.8rem;
+}  
+  
+.post {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+.post-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.post-title{
+    margin-top: 0.3rem;
+    display: flex;
+    font-size: 0.8rem;
+    align-items: center;
+    justify-self: center;
+}
+.post-title img{
+    width: 1.4rem;
+    height: 1.4rem;
+    margin-right: 0.3rem;
+    border-radius: 0.3rem;
+}
+.post-title p {
+    color: rgb(139, 143, 144);
+}
+
+.post-join-btn button{
+    padding: 0.18rem 1rem;
+    border: none;
+    background-color: var(--button-color);
+    color: white;
+    border-radius: 2rem;
+}
+.post-join-btn button:hover {
+    background-color: rgb(20,121,205);
+}
+
+
+
+.right-content {
+ flex: 1;
+}
+.post-content p {
+  margin: 0.41rem;
+}
+.post-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.post-content img{
+    height: 30rem;
+    width: 40rem;
+}
+.reactions {
+    margin-top: 1rem;
+}
+.reactions a {
+    color: var(--text-color);
+    margin-left: 1rem;
+}
+.reactions a:hover {
+    color: var(--accent-color);
+}
+.comments-thread {
+    display: flex;
+    background-color: white;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 0.6rem;
+    flex-direction: column;
+}
+.comments {
+    display: flex;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.6rem;
+    flex-direction: column;
+}
+.commenter-info {
+    margin-bottom: 0.7rem;
+}
+.commenter-info img {
+    width: 1.4rem;
+    height: 1.4rem;
+    margin-right: 0.3rem;
+    border-radius: 0.3rem;
+}
+.commenter-info a {
+    font-size: 0.8rem;
+}
+.commenter-info a:hover {
+    font-size: 0.8rem;
+    text-decoration: underline;
+}
+
+.comments-reactions {
+    margin-top: 1rem;
+    display: flex;
+}
+.comments-reactions p {
+    margin: 0 1rem;
+}
+.reactions-buttons{
+    margin-left: 0.6rem;
+    margin-bottom: 2rem;
+}
+.reactions-buttons a {
+    margin-right: 0.6rem;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+.reactions-buttons a:hover {
+    color: var(--accent-color);
+}
+.right-card{
+    margin: 1rem;
+    border-radius: 0.6rem;
+    background-color: white;
+}
+.background{
+    width: 18rem;
+}
+.right-section {
+    padding: 1rem;
+}
+.reddit-logo{
+  display: inline;
+  width: 3rem;
+}
+.right-card h1 {
+    display: inline;
+    font-size: 1rem;
+}
+.right-btns {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+}
+.right-btns a{
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.6rem 0;
+    border-radius: 2rem;
+    margin: 0.2rem;
+    color: white;
+    font-weight: 500;
+}
+.right-btns a:first-child{
+    background-color: var(--button-color);
+}
+.right-btns a:first-child:hover{
+    background-color: rgb(20,121,205);
+}
+.right-btns a:last-child {
+    background-color: white;
+    border: 1px solid var(--button-color);
+    color: var(--button-color);
+    font-weight: 900;
+}
+.right-btns a:last-child:hover{
+    background-color: rgb(245, 249, 253);
+}
+
+/* End of Main Container Styling */
