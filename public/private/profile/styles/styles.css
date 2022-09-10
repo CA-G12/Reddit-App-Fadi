@@ -42,7 +42,6 @@ input.empty {
 
 .logo {
     display: flex;
-    flex: 2;
     align-items: center;
     margin-left: 2rem;
     margin-right: 2rem;
@@ -58,7 +57,6 @@ input.empty {
 }
 .profile {
     display: flex;
-    flex: 2;
     justify-content: center;
     align-items: center;
     margin-right: 1rem;

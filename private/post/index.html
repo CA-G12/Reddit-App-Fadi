@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/private/profile/styles/styles.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="/private/post/styles/styles.css">
+    <title>posts-section</title>
 </head>
 <body>
     <nav class="navbar">
         <section class="logo">
-            <img src="/assets/reddit-logo.png" alt="logo">
-            <p>reddit</p>
+            <a href="/pages/profile/"><img src="/assets/reddit-logo.png" alt="logo"></a>
+            <a href="/pages/profile/"><p>reddit</p></a>
         </section>
 
          <section class="dropdown">
@@ -36,11 +36,27 @@
             <a href=""> <i class="fa-sharp fa-solid fa-plus"></i></a>  
         </section>
     </nav>
+
+
     <section class="container">
 
         <!-- Left Container -->
         <section class="left-content">
-    
+            <section class="posts-section">
+            </section>
+            <section class="comments-thread">
+                <h1>Comments: </h1>
+                <section class="comments">
+                    <section class="write-comment">
+                        <textarea placeholder="Write a comment: "></textarea>
+
+                    </section>
+                    <section class="comment-btn">
+                        <a>Comment</a>
+                    </section>
+                    <hr>
+                </section>
+            </section>
         </section>
 
 
@@ -61,8 +77,8 @@
         </section>
         </section>
     </section>
-    
+
     <script src="https://kit.fontawesome.com/0c259b04b4.js" crossorigin="anonymous"></script>
-    <script src="/private/profile/js/index.js"></script>
+    <script src="/private/post/js/index.js"></script>
 </body>
 </html>

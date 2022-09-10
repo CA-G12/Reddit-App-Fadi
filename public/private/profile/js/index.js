@@ -1,4 +1,32 @@
 const postContainer = document.querySelector('.left-content');
+const navbar = document.querySelector('.navbar');
+
+const profileInfoCard = () => {
+  const profileSection = document.createElement('section');
+  profileSection.classList.add('profile');
+
+  const imgSection = document.createElement('div');
+  const avatar = document.createElement('img');
+  avatar.src = 'https://pbs.twimg.com/profile_images/1559252590696828929/BsqrxPyi_400x400.jpg';
+  imgSection.appendChild(avatar);
+
+  profileSection.appendChild(imgSection);
+
+  const profileInfo = document.createElement('div');
+  profileInfo.classList.add('profile-info');
+  const username = document.createElement('p');
+  username.classList.add('username');
+  username.textContent = 'mynameinitials';
+  profileInfo.appendChild(username);
+
+  const karams = document.createElement('p');
+  karams.classList.add('karams');
+  karams.textContent = '1 karams';
+  profileInfo.appendChild(karams);
+
+  profileSection.appendChild(profileInfo);
+  navbar.appendChild(profileSection);
+};
 
 const postsCard = () => {
   const postCard = document.createElement('section');
@@ -46,7 +74,7 @@ const postsCard = () => {
   const postTitleSection = document.createElement('section');
   postTitleSection.classList.add('post-title');
   const avatar = document.createElement('img');
-  avatar.src = '../assets/profile.jpeg';
+  avatar.src = 'https://pbs.twimg.com/profile_images/1559252590696828929/BsqrxPyi_400x400.jpg';
   postTitleSection.appendChild(avatar);
 
   const ancor = document.createElement('a');
@@ -63,8 +91,7 @@ const postsCard = () => {
   const joinButton = document.createElement('button');
   joinButton.textContent = 'Join';
   joinButtonSection.appendChild(joinButton);
-  postInfoSection.appendChild(joinButtonSection)
-  
+  postInfoSection.appendChild(joinButtonSection);
   const postContentSection = document.createElement('section');
   postContentSection.classList.add('post-content');
 
@@ -86,7 +113,7 @@ const postsCard = () => {
   firstIconAncor.appendChild(firstSpan);
   firstSpan.textContent = ' Comments';
   firstIconAncor.addEventListener('click', () => {
-    location.href = '/post?id=1';
+    location.href = '/pages/profile/1/1';
   });
   reactionsSection.appendChild(firstIconAncor);
 
@@ -127,3 +154,4 @@ const postsCard = () => {
 };
 
 postsCard();
+profileInfoCard();

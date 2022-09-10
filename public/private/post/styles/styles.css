@@ -42,7 +42,6 @@ input.empty {
 
 .logo {
     display: flex;
-    flex: 2;
     align-items: center;
     margin-left: 2rem;
     margin-right: 2rem;
@@ -58,7 +57,6 @@ input.empty {
 }
 .profile {
     display: flex;
-    flex: 2;
     justify-content: center;
     align-items: center;
     margin-right: 1rem;
@@ -182,7 +180,6 @@ input.empty {
     margin: 1rem;
     padding: 1rem;
     border-radius: 0.6rem;
-    
 }
 
 .create-post img{
@@ -329,6 +326,57 @@ input.empty {
 .reactions a:hover {
     color: var(--accent-color);
 }
+.comments-thread {
+    display: flex;
+    background-color: white;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 0.6rem;
+    flex-direction: column;
+}
+.comments {
+    display: flex;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.6rem;
+    flex-direction: column;
+}
+.commenter-info {
+    margin-bottom: 0.7rem;
+}
+.commenter-info img {
+    width: 1.4rem;
+    height: 1.4rem;
+    margin-right: 0.3rem;
+    border-radius: 0.3rem;
+}
+.commenter-info a {
+    font-size: 0.8rem;
+}
+.commenter-info a:hover {
+    font-size: 0.8rem;
+    text-decoration: underline;
+}
+
+.comments-reactions {
+    margin-top: 1rem;
+    display: flex;
+}
+.comments-reactions p {
+    margin: 0 1rem;
+}
+.reactions-buttons{
+    margin-left: 0.6rem;
+    margin-bottom: 2rem;
+}
+.reactions-buttons a {
+    margin-right: 0.6rem;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+.reactions-buttons a:hover {
+    color: var(--accent-color);
+}
 .right-card{
     margin: 1rem;
     border-radius: 0.6rem;
@@ -353,7 +401,7 @@ input.empty {
     flex-direction: column;
     padding-bottom: 1rem;
 }
-.right-btns a { 
+.right-btns a{
     border: none;
     display: flex;
     justify-content: center;
@@ -379,5 +427,65 @@ input.empty {
 .right-btns a:last-child:hover{
     background-color: rgb(245, 249, 253);
 }
+.comments-thread h1 {
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+    font-weight: 500;
+}
+.comments {
+    display: flex;
+}
+.write-comment{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+}
+.write-comment textarea{
+    resize: none;
+    position: relative;
+    width: 95%;
+    height: 5rem;
+    margin-bottom: 0.4rem;
+    border: none;
+    border: 1px solid black; 
+    padding: 0.4rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.8rem;
+    border-radius: 0.6rem;
+} 
+
+.comment-btn{
+    display: flex;
+    justify-content: end;
+}
+.comment-btn a {
+    padding: 0.3rem 2rem;
+    border: none;
+    background-color: var(--button-color);
+    color: white;
+    border-radius: 1rem;
+    margin-bottom: 0.7rem;
+}
+
+.write-comment a:hover {
+    background-color: rgb(20,121,205);
+}
+
+.write-comment textarea::placeholder {
+    color: var(--text-color);
+} 
+
+.write-comment textarea:focus {
+    color: black;
+    outline: none !important;
+}
+.write-comment hr {
+    width: 100%;
+    border-top: 1px solid var(--text-color);
+}
+
+
+
 
 /* End of Main Container Styling */

@@ -58,7 +58,7 @@ describe('test sign in and sign up validation', () => {
       .end((err, res) => {
         if (err) return done(err);
         expect(res.status).toBe(201);
-        expect(res.text).toBe('Inserted Succuessfly!');
+        expect(res.body.msg).toBe('inserted!');
         return done();
       });
   });
