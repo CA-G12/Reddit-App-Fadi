@@ -43,7 +43,7 @@ const postSignin = (req, res, next) => {
                     username: user.username,
                     id: user.id,
                   });
-                  res.cookie('token', token).json('SignedIn');
+                  res.status(200).cookie('token', token).json('SignedIn');
                 } else throw next(new CustomizedError(401, 'Wrong Credentials'));
               }).catch((err) => next(err));
           } else {
