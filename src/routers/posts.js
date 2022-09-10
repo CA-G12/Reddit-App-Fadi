@@ -3,7 +3,7 @@ const { getFeedPosts, getASinglePost, insertNewPosts } = require('../controllers
 const verifyAccessToken = require('../middlewears/verifyAccessToken');
 
 router.get('/feed', getFeedPosts);
-router.get('/post/:id', verifyAccessToken, getASinglePost);
+router.get('/post/:id', getASinglePost);
 router.post('/new-post', verifyAccessToken, insertNewPosts);
 
 module.exports = router;
