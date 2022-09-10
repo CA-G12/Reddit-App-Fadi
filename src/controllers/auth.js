@@ -43,7 +43,7 @@ const postSignin = (req, res, next) => {
                     username: user.username,
                     id: user.id,
                   });
-                  res.cookie('token', token).json('SignedIn');
+                  res.status(200).cookie('token', token).json('SignedIn');
                 } else throw next(new CustomizedError(401, 'Wrong Credentials'));
               }).catch((err) => next(err));
           } else {
@@ -52,8 +52,17 @@ const postSignin = (req, res, next) => {
         }).catch((err) => next(err));
     }).catch((err) => next(new CustomizedError(400, `Bad request: ${err.details[0].message}`)));
 };
+const getLogout = (req, res, next) => {
+  try {
+    res.clearCookie('token');
+    res.status(301).redirect('/');
+  } catch (err) {
+    next(err);
+  }
+};
 
 module.exports = {
   postSignup,
   postSignin,
+  getLogout,
 };

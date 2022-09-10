@@ -37,6 +37,10 @@ const profileInfoCard = (profile) => {
   logoutBtn.textContent = 'Logout';
   profileSection.appendChild(logoutBtn);
 
+  logoutBtn.addEventListener('click', () => {
+    fetch('/api/v1/auth/logout').then(() => { location.href = '/'; }).catch(err => alert(err));
+  });
+
   profileSection.appendChild(profileInfo);
   navbar.appendChild(profileSection);
 };
