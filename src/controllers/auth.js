@@ -52,8 +52,17 @@ const postSignin = (req, res, next) => {
         }).catch((err) => next(err));
     }).catch((err) => next(new CustomizedError(400, `Bad request: ${err.details[0].message}`)));
 };
+const getLogout = (req, res, next) => {
+  try {
+    res.clearCookie('token');
+    res.status(301).redirect('/');
+  } catch (err) {
+    next(err);
+  }
+};
 
 module.exports = {
   postSignup,
   postSignin,
+  getLogout,
 };
