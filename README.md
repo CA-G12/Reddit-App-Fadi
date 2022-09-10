@@ -2,7 +2,8 @@
 [Live Link](https://reddit-fadi.herokuapp.com)
 ## Description
 This is a clone of the Reddit app. it lets you post your thoughts and comments on others' posts.
-
+## ERD:
+[Link](https://drawsql.app/teams/fadezak100/diagrams/reddit-app)
 ## Features: 
 - Add a new post. 
 - Add a comment on others' posts.
