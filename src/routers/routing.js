@@ -5,7 +5,7 @@ const {
 
 router.get('/signin', getSinginPage);
 router.get('/signup', getSingupPage);
-router.get('/profile', getPrivateFeed);
-router.get('/profile/:id/:postid', getPrivatePost);
+router.get('/profile/:username', getPrivateFeed);
+router.get('/profile/:username/:postid', getPrivatePost);
 
 module.exports = router;

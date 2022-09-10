@@ -377,5 +377,16 @@ input.empty {
 .right-btns a:last-child:hover{
     background-color: rgb(245, 249, 253);
 }
+.logout{
+    margin: 1rem;
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 0.6rem;
+    color: white;
+    background-color: var(--accent-color);
+}
+.logout:hover{
+    background-color: rgb(240, 61, 29);
+}
 
 /* End of Main Container Styling */

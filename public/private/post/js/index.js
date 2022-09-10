@@ -1,14 +1,33 @@
 const postContainer = document.querySelector('.posts-section');
 const CommentContainer = document.querySelector('.comments-thread');
+const commentBtn = document.querySelector('.submit-comment');
+const commentInput = document.querySelector('.comment-input');
 const navbar = document.querySelector('.navbar');
+const backLogo = document.querySelector('.back-logo');
+const backText = document.querySelector('.back-text');
 
-const profileInfoCard = () => {
+const getUserName = () => {
+  const url = location.href;
+  const username = url.split('/')[5];
+  return username;
+};
+
+backLogo.href = `/pages/profile/${getUserName()}`;
+backText.href = `/pages/profile/${getUserName()}`;
+
+const getPostId = () => {
+  const url = location.href;
+  const postId = url.split('/')[6];
+  return postId;
+};
+
+const profileInfoCard = (profile) => {
   const profileSection = document.createElement('section');
   profileSection.classList.add('profile');
 
   const imgSection = document.createElement('div');
   const avatar = document.createElement('img');
-  avatar.src = 'https://pbs.twimg.com/profile_images/1559252590696828929/BsqrxPyi_400x400.jpg';
+  avatar.src = profile.avatar;
   imgSection.appendChild(avatar);
 
   profileSection.appendChild(imgSection);
@@ -17,7 +36,7 @@ const profileInfoCard = () => {
   profileInfo.classList.add('profile-info');
   const username = document.createElement('p');
   username.classList.add('username');
-  username.textContent = 'mynameinitials';
+  username.textContent = profile.username;
   profileInfo.appendChild(username);
 
   const karams = document.createElement('p');
@@ -25,11 +44,16 @@ const profileInfoCard = () => {
   karams.textContent = '1 karams';
   profileInfo.appendChild(karams);
 
+  const logoutBtn = document.createElement('button');
+  logoutBtn.classList.add('logout');
+  logoutBtn.textContent = 'Logou';
+  profileSection.appendChild(logoutBtn);
+
   profileSection.appendChild(profileInfo);
   navbar.appendChild(profileSection);
 };
 
-const postsCard = () => {
+const postsCard = (post) => {
   const postCard = document.createElement('section');
   postCard.classList.add('posts-card');
 
@@ -75,14 +99,14 @@ const postsCard = () => {
   const postTitleSection = document.createElement('section');
   postTitleSection.classList.add('post-title');
   const avatar = document.createElement('img');
-  avatar.src = 'https://pbs.twimg.com/profile_images/1559252590696828929/BsqrxPyi_400x400.jpg';
+  avatar.src = post.avatar;
   postTitleSection.appendChild(avatar);
 
   const ancor = document.createElement('a');
-  ancor.innerHTML = 'r/betterCallSaul &nbsp;';
+  ancor.innerHTML = `${post.username} &nbsp;`;
   postTitleSection.appendChild(ancor);
   const postedBy = document.createElement('p');
-  postedBy.innerHTML = 'Posted by <a>u/CoolBen07</a> 14 hours ago';
+  postedBy.innerHTML = `Posted by <a>${post.username}</a> 14 hours ago`;
   postTitleSection.appendChild(postedBy);
   postInfoSection.appendChild(postTitleSection);
   postContent.appendChild(postInfoSection);
@@ -97,13 +121,13 @@ const postsCard = () => {
   postContentSection.classList.add('post-content');
 
   const postText = document.createElement('p');
-  postText.textContent = 'Why does Jimmy wear the Wayfarer Ribbon in the finale?';
+  postText.textContent = post.content;
   postContentSection.appendChild(postText);
 
   postContent.appendChild(postContentSection);
 };
 
-const CommentsCard = () => {
+const CommentsCard = (userComment) => {
   const commentCard = document.createElement('section');
   commentCard.classList.add('comments');
 
@@ -111,11 +135,11 @@ const CommentsCard = () => {
   commentorInfo.classList.add('commenter-info');
 
   const commenterImg = document.createElement('img');
-  commenterImg.src = 'https://pbs.twimg.com/profile_images/1559252590696828929/BsqrxPyi_400x400.jpg';
+  commenterImg.src = userComment.avatar;
   commentorInfo.appendChild(commenterImg);
 
   const commenterUsername = document.createElement('a');
-  commenterUsername.textContent = 'Antique-Inspector-48';
+  commenterUsername.textContent = userComment.username;
   commenterUsername.href = '';
   commentorInfo.appendChild(commenterUsername);
   commentCard.appendChild(commentorInfo);
@@ -123,7 +147,7 @@ const CommentsCard = () => {
   const comment = document.createElement('section');
   comment.classList.add('comment');
   const commentContent = document.createElement('p');
-  commentContent.textContent = 'Good edit, but I honestly consider this one of the darkest moments in the show (much more than the last few scenes) so the song is a lil too upbeat lol';
+  commentContent.textContent = userComment.content;
   comment.appendChild(commentContent);
   commentCard.appendChild(comment);
 
@@ -166,9 +190,39 @@ const CommentsCard = () => {
   commentCard.appendChild(commentReactionsSection);
   CommentContainer.appendChild(commentCard);
 };
-profileInfoCard();
-postsCard();
-CommentsCard();
-CommentsCard();
-CommentsCard();
-CommentsCard();
+
+fetch(`/api/v1/users/${getUserName()}`)
+  .then((data) => data.json())
+  .then((profile) => profileInfoCard(profile[0]))
+  .catch((err) => alert(err));
+
+fetch(`/api/v1/posts/post/${getPostId()}`)
+  .then((data) => data.json())
+  .then((post) => postsCard(post[0]))
+  .catch((err) => alert(err));
+
+fetch(`/api/v1/comments/${getPostId()}`)
+  .then((data) => data.json())
+  .then((comments) => {
+    comments.forEach((userComment) => {
+      CommentsCard(userComment);
+    });
+  });
+
+commentBtn.addEventListener('click', () => {
+  fetch(`/api/v1/users/${getUserName()}`)
+    .then((data) => data.json())
+    .then((user) => {
+      fetch('/api/v1/comments/new-comment', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          content: commentInput.value,
+          userId: user[0].id,
+          postId: getPostId(),
+        }),
+      }).then((data) => location.reload()).catch((err) => console.log(err));
+    });
+});

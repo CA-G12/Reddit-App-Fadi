@@ -1,13 +1,21 @@
 const postContainer = document.querySelector('.left-content');
 const navbar = document.querySelector('.navbar');
+const post = document.querySelector('.post');
+const postContnet = document.querySelector('.post-content');
 
-const profileInfoCard = () => {
+const getUserName = () => {
+  const url = location.href;
+  const username = url.split('/')[5];
+  return username;
+};
+
+const profileInfoCard = (profile) => {
   const profileSection = document.createElement('section');
   profileSection.classList.add('profile');
 
   const imgSection = document.createElement('div');
   const avatar = document.createElement('img');
-  avatar.src = 'https://pbs.twimg.com/profile_images/1559252590696828929/BsqrxPyi_400x400.jpg';
+  avatar.src = profile.avatar;
   imgSection.appendChild(avatar);
 
   profileSection.appendChild(imgSection);
@@ -16,7 +24,7 @@ const profileInfoCard = () => {
   profileInfo.classList.add('profile-info');
   const username = document.createElement('p');
   username.classList.add('username');
-  username.textContent = 'mynameinitials';
+  username.textContent = profile.username;
   profileInfo.appendChild(username);
 
   const karams = document.createElement('p');
@@ -24,11 +32,16 @@ const profileInfoCard = () => {
   karams.textContent = '1 karams';
   profileInfo.appendChild(karams);
 
+  const logoutBtn = document.createElement('button');
+  logoutBtn.classList.add('logout');
+  logoutBtn.textContent = 'Logou';
+  profileSection.appendChild(logoutBtn);
+
   profileSection.appendChild(profileInfo);
   navbar.appendChild(profileSection);
 };
 
-const postsCard = () => {
+const postsCard = (post) => {
   const postCard = document.createElement('section');
   postCard.classList.add('posts-card');
 
@@ -74,14 +87,14 @@ const postsCard = () => {
   const postTitleSection = document.createElement('section');
   postTitleSection.classList.add('post-title');
   const avatar = document.createElement('img');
-  avatar.src = 'https://pbs.twimg.com/profile_images/1559252590696828929/BsqrxPyi_400x400.jpg';
+  avatar.src = post.avatar;
   postTitleSection.appendChild(avatar);
 
   const ancor = document.createElement('a');
-  ancor.innerHTML = 'r/betterCallSaul &nbsp;';
+  ancor.innerHTML = `${post.username} &nbsp;`;
   postTitleSection.appendChild(ancor);
   const postedBy = document.createElement('p');
-  postedBy.innerHTML = 'Posted by <a>u/CoolBen07</a> 14 hours ago';
+  postedBy.innerHTML = `Posted by <a> ${post.username} </a> 14 hours ago`;
   postTitleSection.appendChild(postedBy);
   postInfoSection.appendChild(postTitleSection);
   postContent.appendChild(postInfoSection);
@@ -96,7 +109,7 @@ const postsCard = () => {
   postContentSection.classList.add('post-content');
 
   const postText = document.createElement('p');
-  postText.textContent = 'Why does Jimmy wear the Wayfarer Ribbon in the finale?';
+  postText.textContent = post.content;
   postContentSection.appendChild(postText);
 
   postContent.appendChild(postContentSection);
@@ -113,7 +126,7 @@ const postsCard = () => {
   firstIconAncor.appendChild(firstSpan);
   firstSpan.textContent = ' Comments';
   firstIconAncor.addEventListener('click', () => {
-    location.href = '/pages/profile/1/1';
+    location.href = `/pages/profile/${getUserName()}/${post.post_id}`;
   });
   reactionsSection.appendChild(firstIconAncor);
 
@@ -153,5 +166,39 @@ const postsCard = () => {
   postContent.appendChild(reactionsSection);
 };
 
-postsCard();
-profileInfoCard();
+fetch('/api/v1/posts/feed')
+  .then((data) => data.json())
+  .then((posts) => {
+    posts.forEach((post) => postsCard(post));
+  });
+
+fetch(`/api/v1/users/${getUserName()}`)
+  .then((data) => data.json())
+  .then((profile) => profileInfoCard(profile[0]))
+  .catch((err) => alert(err));
+
+const insertNewPost = () => {
+  fetch(`/api/v1/users/${getUserName()}`)
+    .then((data) => data.json())
+    .then((data) => {
+      fetch('/api/v1/posts/new-post', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          content: postContnet.value,
+          userId: data[0].id,
+        }),
+      }).then(() => location.reload()).catch((err) => alert(err));
+    })
+    .catch((err) => alert(err));
+};
+
+post.addEventListener('click', () => {
+  if (postContnet.value === '') {
+    alert('Post should have content!');
+  } else {
+    insertNewPost();
+  }
+});

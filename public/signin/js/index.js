@@ -41,7 +41,7 @@ signin.addEventListener('click', () => {
       password: password.value,
     }),
   }).then((data) => {
-    if (data.status === 200) location.href = `/pages/profiles?username=${username.value}`;
+    if (data.status === 200) location.href = `/pages/profile/${username.value}`;
     else throw new Error('Wrong Credintials');
   }).catch((err) => alert(err));
 });
