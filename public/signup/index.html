@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/signin/styles/styles.css">
+    <link rel="stylesheet" href="/signup/styles/styles.css">
     <title>SIGN UP</title>
 </head>
 <body>
@@ -22,11 +22,14 @@
                 <section class="content-divider">
                     <span class="divide-line"></span>
                 </section>
+                <section class="error">
+                </section>
                 <section class="form">
-                    <input type="email" placeholder="Username" required>
-                    <input type="password" placeholder="Password" required>
-                    <input type="url" placeholder="Avatar" required>
-                    <button type="submit">Register</button>
+                    <input class='username' type="text" placeholder="Username" required>
+                    <input class='password' type="password" placeholder="Password" required>
+                    <input class='confirm-password' type="password" placeholder="Confirm Password" required>
+                    <input class='avatar' type="url" placeholder="Avatar" required>
+                    <button class='register'>Register</button>
                 </section>
 
                 <section class="more">
@@ -35,6 +38,6 @@
             </section>
         </section>
     </section> 
-    <script src="/signin/js/index.js"></script>
+    <script src="/signup/js/index.js"></script>
 </body>
 </html>

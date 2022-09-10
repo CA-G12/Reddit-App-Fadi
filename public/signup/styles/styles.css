@@ -36,7 +36,7 @@ a {
     display: flex;
 }
 .auth-info{
-    margin-top: 10rem;
+    margin-top: 7rem;
     display: flex;
     flex-direction: column;
 }
@@ -107,4 +107,14 @@ a {
     background-color: rgb(2, 137, 211);
     color: white;
     width: 70%;
+}
+.not-valid {
+    color: red;
+}
+.valid {
+    color: green;
+}
+
+.error p {
+    color: red;
 }

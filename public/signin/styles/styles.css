@@ -119,4 +119,14 @@ a {
 .more p a:hover {
     color: rgb(2, 137, 211);
 }
+.not-valid {
+    color: red;
+}
+.valid {
+    color: green;
+}
+
+.error p {
+    color: red;
+}
 

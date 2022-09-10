@@ -1,4 +1,6 @@
-const { getSinginPage, getSingupPage } = require('./routing');
+const {
+  getSinginPage, getSingupPage, getPrivatePost, getPrivateFeed,
+} = require('./routing');
 const { postSignup, postSignin } = require('./auth');
 
 module.exports = {
@@ -6,4 +8,6 @@ module.exports = {
   getSingupPage,
   postSignup,
   postSignin,
+  getPrivatePost,
+  getPrivateFeed,
 };

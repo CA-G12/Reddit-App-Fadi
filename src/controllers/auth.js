@@ -21,7 +21,7 @@ const postSignup = (req, res, next) => {
           hashPassword(req.body.password)
             .then((hashedPassword) => {
               insertNewUserQuery({ ...req.body, password: hashedPassword })
-                .then(() => res.status(201).send('Inserted Succuessfly!'))
+                .then(() => res.status(201).json({ username: req.body.username, msg: 'inserted!' }))
                 .catch((err) => next(err));
             }).catch((err) => next(err));
         }).catch((err) => next(new CustomizedError(400, `Bad request: ${err.details[0].message}`)));

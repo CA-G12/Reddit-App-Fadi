@@ -10,7 +10,19 @@ const getSingupPage = (req, res) => {
   res.sendFile(path);
 };
 
+const getPrivatePost = (req, res) => {
+  const path = join(__dirname, '..', '..', 'private', 'post', 'index.html');
+  res.sendFile(path);
+};
+
+const getPrivateFeed = (req, res) => {
+  const path = join(__dirname, '..', '..', 'private', 'profile', 'index.html');
+  res.sendFile(path);
+};
+
 module.exports = {
   getSinginPage,
   getSingupPage,
+  getPrivatePost,
+  getPrivateFeed,
 };
