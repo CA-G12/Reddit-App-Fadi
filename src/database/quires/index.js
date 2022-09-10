@@ -7,6 +7,12 @@ const getAllPostsComments = require('./comments/getAllPostsComments');
 const getUsersIdQuery = require('./users/getUserIdQuery');
 const insertNewPost = require('./posts/insertNewPost');
 const insertNewCommentQuery = require('./comments/insertNewVComment');
+const {
+  checkIsVotedComment,
+  checkIsVotedPost,
+  addVoteComments,
+  addVotePosts,
+} = require('./votes');
 
 module.exports = {
   getUserQuery,
@@ -20,4 +26,8 @@ module.exports = {
   getUsersIdQuery,
   insertNewPost,
   insertNewCommentQuery,
+  checkIsVotedComment,
+  checkIsVotedPost,
+  addVoteComments,
+  addVotePosts,
 };

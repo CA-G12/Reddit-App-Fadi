@@ -34,7 +34,7 @@ const profileInfoCard = (profile) => {
 
   const logoutBtn = document.createElement('button');
   logoutBtn.classList.add('logout');
-  logoutBtn.textContent = 'Logou';
+  logoutBtn.textContent = 'Logout';
   profileSection.appendChild(logoutBtn);
 
   profileSection.appendChild(profileInfo);
@@ -57,7 +57,7 @@ const postsCard = (post) => {
   votesSection.appendChild(upVote);
 
   const votesNumber = document.createElement('p');
-  votesNumber.textContent = 6;
+  votesNumber.textContent = post.votes;
   votesSection.appendChild(votesNumber);
 
   const downVote = document.createElement('a');
