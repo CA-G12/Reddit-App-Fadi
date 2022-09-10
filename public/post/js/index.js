@@ -1,7 +1,11 @@
 const postContainer = document.querySelector('.posts-section');
 const CommentContainer = document.querySelector('.comments-thread');
-
-const postsCard = () => {
+const getPostId = () => {
+  const url = location.href;
+  const postId = url.split('=')[1];
+  return postId;
+};
+const postsCard = (post) => {
   const postCard = document.createElement('section');
   postCard.classList.add('posts-card');
 
@@ -14,6 +18,7 @@ const postsCard = () => {
   upVoteIcon.classList.add('fas');
   upVoteIcon.classList.add('fa-angle-up');
   upVote.appendChild(upVoteIcon);
+  upVote.href = '/pages/signin';
   votesSection.appendChild(upVote);
 
   const votesNumber = document.createElement('p');
@@ -26,6 +31,7 @@ const postsCard = () => {
   downVoteIcon.classList.add('fa-angle-down');
   downVote.appendChild(downVoteIcon);
   votesSection.appendChild(downVote);
+  downVote.href = '/pages/signin';
   postContainer.appendChild(postCard);
 
   const postContent = document.createElement('section');
@@ -47,14 +53,14 @@ const postsCard = () => {
   const postTitleSection = document.createElement('section');
   postTitleSection.classList.add('post-title');
   const avatar = document.createElement('img');
-  avatar.src = '../assets/profile.jpeg';
+  avatar.src = post.avatar;
   postTitleSection.appendChild(avatar);
 
   const ancor = document.createElement('a');
-  ancor.innerHTML = 'r/betterCallSaul &nbsp;';
+  ancor.innerHTML = `${post.username} &nbsp;`;
   postTitleSection.appendChild(ancor);
   const postedBy = document.createElement('p');
-  postedBy.innerHTML = 'Posted by <a>u/CoolBen07</a> 14 hours ago';
+  postedBy.innerHTML = `Posted by <a>${post.username}</a> 14 hours ago`;
   postTitleSection.appendChild(postedBy);
   postInfoSection.appendChild(postTitleSection);
   postContent.appendChild(postInfoSection);
@@ -64,67 +70,17 @@ const postsCard = () => {
   const joinButton = document.createElement('button');
   joinButton.textContent = 'Join';
   joinButtonSection.appendChild(joinButton);
-  postInfoSection.appendChild(joinButtonSection)
-  
+  postInfoSection.appendChild(joinButtonSection);
   const postContentSection = document.createElement('section');
   postContentSection.classList.add('post-content');
 
   const postText = document.createElement('p');
-  postText.textContent = 'Why does Jimmy wear the Wayfarer Ribbon in the finale?';
+  postText.textContent = post.content;
   postContentSection.appendChild(postText);
 
   postContent.appendChild(postContentSection);
-
-  const reactionsSection = document.createElement('section');
-  reactionsSection.classList.add('reactions');
-  const firstIconAncor = document.createElement('a');
-  const firstIcon = document.createElement('i');
-  firstIcon.classList.add('fa-sharp');
-  firstIcon.classList.add('fa-solid');
-  firstIcon.classList.add('fa-message');
-  const firstSpan = document.createElement('span');
-  firstIconAncor.appendChild(firstIcon);
-  firstIconAncor.appendChild(firstSpan);
-  firstSpan.textContent = ' Comments';
-  reactionsSection.appendChild(firstIconAncor);
-
-  const secondIconAncor = document.createElement('a');
-  const secondIcon = document.createElement('i');
-  secondIcon.classList.add('fa-sharp');
-  secondIcon.classList.add('fa-solid');
-  secondIcon.classList.add('fa-gift');
-  const secondSpan = document.createElement('span');
-  secondIconAncor.appendChild(secondIcon);
-  secondIconAncor.appendChild(secondSpan);
-  secondSpan.textContent = ' Rewards';
-  reactionsSection.appendChild(secondIconAncor);
-
-  const thirdIconAncor = document.createElement('a');
-  const thirdIcon = document.createElement('i');
-  thirdIcon.classList.add('fa-sharp');
-  thirdIcon.classList.add('fa-solid');
-  thirdIcon.classList.add('fa-share');
-  const thirdSpan = document.createElement('span');
-  thirdIconAncor.appendChild(thirdIcon);
-  thirdIconAncor.appendChild(thirdSpan);
-  thirdSpan.textContent = ' Rewards';
-  reactionsSection.appendChild(thirdIconAncor);
-
-  const fourthIconAncor = document.createElement('a');
-  const fourthIcon = document.createElement('i');
-  fourthIcon.classList.add('fa-sharp');
-  fourthIcon.classList.add('fa-solid');
-  fourthIcon.classList.add('fa-ellipsis');
-  const fourthSpan = document.createElement('span');
-  fourthIconAncor.appendChild(fourthIcon);
-  fourthIconAncor.appendChild(fourthSpan);
-  fourthSpan.textContent = ' More';
-  reactionsSection.appendChild(fourthIconAncor);
-
-  postContent.appendChild(reactionsSection);
 };
-
-const CommentsCard = () => {
+const CommentsCard = (userComment) => {
   const commentCard = document.createElement('section');
   commentCard.classList.add('comments');
 
@@ -132,11 +88,11 @@ const CommentsCard = () => {
   commentorInfo.classList.add('commenter-info');
 
   const commenterImg = document.createElement('img');
-  commenterImg.src = '../assets/profile.jpeg';
+  commenterImg.src = userComment.avatar;
   commentorInfo.appendChild(commenterImg);
 
   const commenterUsername = document.createElement('a');
-  commenterUsername.textContent = 'Antique-Inspector-48';
+  commenterUsername.textContent = userComment.username;
   commenterUsername.href = '';
   commentorInfo.appendChild(commenterUsername);
   commentCard.appendChild(commentorInfo);
@@ -144,30 +100,12 @@ const CommentsCard = () => {
   const comment = document.createElement('section');
   comment.classList.add('comment');
   const commentContent = document.createElement('p');
-  commentContent.textContent = 'Good edit, but I honestly consider this one of the darkest moments in the show (much more than the last few scenes) so the song is a lil too upbeat lol';
+  commentContent.textContent = userComment.content;
   comment.appendChild(commentContent);
   commentCard.appendChild(comment);
 
   const commentReactionsSection = document.createElement('section');
-  commentReactionsSection.classList.add('comments-reactions');
-  const commentUpVote = document.createElement('a');
-  const upVoteIcon = document.createElement('i');
-  commentUpVote.classList.add('fas');
-  commentUpVote.classList.add('fa-angle-up');
-  commentUpVote.appendChild(upVoteIcon);
-  commentReactionsSection.appendChild(commentUpVote);
- 
-  const votesCount = document.createElement('p');
-  votesCount.textContent = 6;
-  commentReactionsSection.appendChild(votesCount);
-
-  const commentDownVote = document.createElement('a');
-  const downVoteIcon = document.createElement('i');
-  commentDownVote.classList.add('fas');
-  commentDownVote.classList.add('fa-angle-down');
-  commentDownVote.appendChild(downVoteIcon);
-  commentReactionsSection.appendChild(commentDownVote);
-  
+  commentReactionsSection.classList.add('comments-reactions'); 
   const reactionButtons = document.createElement('section');
   reactionButtons.classList.add('reactions-buttons');
   const share = document.createElement('a');
@@ -188,12 +126,15 @@ const CommentsCard = () => {
   CommentContainer.appendChild(commentCard);
 };
 
-postsCard();
-CommentsCard();
-CommentsCard();
-CommentsCard();
-CommentsCard();
-CommentsCard();
-CommentsCard();
-CommentsCard();
-CommentsCard();
+fetch(`/api/v1/posts/post/${getPostId()}`)
+  .then((data) => data.json())
+  .then((post) => postsCard(post[0]))
+  .catch((err) => alert(err));
+
+fetch(`/api/v1/comments/${getPostId()}`)
+  .then((data) => data.json())
+  .then((comments) => {
+    comments.forEach((userComment) => {
+      CommentsCard(userComment);
+    });
+  });

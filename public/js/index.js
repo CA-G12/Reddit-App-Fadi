@@ -1,6 +1,7 @@
 const postContainer = document.querySelector('.left-content');
 
-const postsCard = () => {
+const postsCard = (post) => {
+  console.log(post)
   const postCard = document.createElement('section');
   postCard.classList.add('posts-card');
 
@@ -46,14 +47,14 @@ const postsCard = () => {
   const postTitleSection = document.createElement('section');
   postTitleSection.classList.add('post-title');
   const avatar = document.createElement('img');
-  avatar.src = '../assets/profile.jpeg';
+  avatar.src = post.avatar;
   postTitleSection.appendChild(avatar);
 
   const ancor = document.createElement('a');
-  ancor.innerHTML = 'r/betterCallSaul &nbsp;';
+  ancor.innerHTML = `${post.username} &nbsp;`;
   postTitleSection.appendChild(ancor);
   const postedBy = document.createElement('p');
-  postedBy.innerHTML = 'Posted by <a>u/CoolBen07</a> 14 hours ago';
+  postedBy.innerHTML = `Posted by <a>${post.username}/a> 14 hours ago`;
   postTitleSection.appendChild(postedBy);
   postInfoSection.appendChild(postTitleSection);
   postContent.appendChild(postInfoSection);
@@ -69,7 +70,7 @@ const postsCard = () => {
   postContentSection.classList.add('post-content');
 
   const postText = document.createElement('p');
-  postText.textContent = 'Why does Jimmy wear the Wayfarer Ribbon in the finale?';
+  postText.textContent = post.content;
   postContentSection.appendChild(postText);
 
   postContent.appendChild(postContentSection);
@@ -126,4 +127,9 @@ const postsCard = () => {
   postContent.appendChild(reactionsSection);
 };
 
-postsCard();
+fetch('/api/v1/posts/feed')
+  .then((data) => data.json())
+  .then((posts) => {
+    posts.forEach((post) => postsCard(post));
+});
+
