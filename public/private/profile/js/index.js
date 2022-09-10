@@ -45,6 +45,9 @@ const profileInfoCard = (profile) => {
   navbar.appendChild(profileSection);
 };
 
+let userId = 0;
+console.log(userId);
+
 const postsCard = (post) => {
   const postCard = document.createElement('section');
   postCard.classList.add('posts-card');
@@ -58,6 +61,43 @@ const postsCard = (post) => {
   upVoteIcon.classList.add('fas');
   upVoteIcon.classList.add('fa-angle-up');
   upVote.appendChild(upVoteIcon);
+  upVote.addEventListener('click', () => {
+    fetch(`/api/v1/users/${getUserName()}`)
+      .then((data) => data.json())
+      .then((data) => {
+        userId = data[0].id;
+        console.log(userId)
+        fetch('/api/v1/votes/is-voted-post', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify({
+            userId: data[0].id,
+            postId: post.id,
+          }),
+        }).then((data) => data.json())
+          .then((data) => {
+            if (data.length === 0) {
+              fetch('/api/v1/votes/post-vote', {
+                method: 'POST',
+                headers: {
+                  'content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                  vote: 1,
+                  userId: userId,
+                  postId: post.id,
+                }),
+              }).then(() => { location.reload(); })
+                .catch((err) => alert(err));
+            } else {
+              alert('You have voted before');
+            }
+          });
+      });
+  });
+
   votesSection.appendChild(upVote);
 
   const votesNumber = document.createElement('p');

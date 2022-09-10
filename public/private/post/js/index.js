@@ -157,25 +157,7 @@ const CommentsCard = (userComment) => {
   commentCard.appendChild(comment);
 
   const commentReactionsSection = document.createElement('section');
-  commentReactionsSection.classList.add('comments-reactions');
-  const commentUpVote = document.createElement('a');
-  const upVoteIcon = document.createElement('i');
-  commentUpVote.classList.add('fas');
-  commentUpVote.classList.add('fa-angle-up');
-  commentUpVote.appendChild(upVoteIcon);
-  commentReactionsSection.appendChild(commentUpVote);
- 
-  const votesCount = document.createElement('p');
-  votesCount.textContent = 6;
-  commentReactionsSection.appendChild(votesCount);
-
-  const commentDownVote = document.createElement('a');
-  const downVoteIcon = document.createElement('i');
-  commentDownVote.classList.add('fas');
-  commentDownVote.classList.add('fa-angle-down');
-  commentDownVote.appendChild(downVoteIcon);
-  commentReactionsSection.appendChild(commentDownVote);
-  
+  commentReactionsSection.classList.add('comments-reactions'); 
   const reactionButtons = document.createElement('section');
   reactionButtons.classList.add('reactions-buttons');
   const share = document.createElement('a');

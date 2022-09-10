@@ -21,9 +21,10 @@ const checkIsVotedComments = (req, res, next) => {
 };
 
 const addVotePost = (req, res, next) => {
+  console.log(req.body);
   const { vote, userId, postId } = req.body;
   addVotePosts(vote, userId, postId)
-    .then((data) => res.send(data.rows))
+    .then((data) => res.send('Inserted'))
     .catch((err) => next(err));
 };
 

@@ -1,11 +1,5 @@
 const connection = require('../../config/connection');
 
-const getAllPosts = () => connection.query('select users.username, users.avatar, users.id, posts.content, posts.id, sum(vote) as votes from users right join posts on users.id = posts.user_id join votes on users.id = votes.user_id group by users.id, posts.id');
+const getAllPosts = () => connection.query('select username, avatar, posts.content, posts.id as post_id, users.id as user_id from users right join posts on users.id = posts.user_id order by posts.id desc');
 
 module.exports = getAllPosts;
-
-
-/*
-select users.username, users.avatar, users.id, posts.content, posts.id, sum(vote) from users right join posts on users.id = posts.user_id join votes on users.id = votes.user_id group by users.id, posts.id
-
-*/
