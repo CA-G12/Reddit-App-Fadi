@@ -46,7 +46,6 @@ const profileInfoCard = (profile) => {
 };
 
 let userId = 0;
-console.log(userId);
 
 const postsCard = (post) => {
   const postCard = document.createElement('section');
@@ -66,7 +65,6 @@ const postsCard = (post) => {
       .then((data) => data.json())
       .then((data) => {
         userId = data[0].id;
-        console.log(userId)
         fetch('/api/v1/votes/is-voted-post', {
           method: 'POST',
           headers: {
