@@ -1,7 +1,6 @@
 const postContainer = document.querySelector('.left-content');
 
 const postsCard = (post) => {
-  console.log(post)
   const postCard = document.createElement('section');
   postCard.classList.add('posts-card');
 
@@ -17,7 +16,7 @@ const postsCard = (post) => {
   votesSection.appendChild(upVote);
 
   const votesNumber = document.createElement('p');
-  votesNumber.textContent = 6;
+  votesNumber.textContent = 0;
   votesSection.appendChild(votesNumber);
 
   const downVote = document.createElement('a');
@@ -54,7 +53,7 @@ const postsCard = (post) => {
   ancor.innerHTML = `${post.username} &nbsp;`;
   postTitleSection.appendChild(ancor);
   const postedBy = document.createElement('p');
-  postedBy.innerHTML = `Posted by <a>${post.username}/a> 14 hours ago`;
+  postedBy.innerHTML = `Posted by <a>${post.username}</a> 14 hours ago`;
   postTitleSection.appendChild(postedBy);
   postInfoSection.appendChild(postTitleSection);
   postContent.appendChild(postInfoSection);
@@ -87,7 +86,7 @@ const postsCard = (post) => {
   firstIconAncor.appendChild(firstSpan);
   firstSpan.textContent = ' Comments';
   firstIconAncor.addEventListener('click', () => {
-    location.href = '/post?id=1';
+    location.href = `/post?id=${post.post_id}`;
   });
   reactionsSection.appendChild(firstIconAncor);
 
